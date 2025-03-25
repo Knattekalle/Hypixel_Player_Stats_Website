@@ -101,7 +101,7 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_data, filename="G
     current_date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
     
     # Create a unique filename with the current date (e.g., guild_data_2025-03-23_14-30.csv)
-    unique_filename = f"{filename}_{current_date}.csv"
+    unique_filename = f"csv_files/{filename}_{current_date}.csv"
     
     # Convert dictionary to DataFrame    
     df = pd.DataFrame.from_dict(guild_data, orient="index")
