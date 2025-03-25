@@ -6,6 +6,7 @@ on:
       - main 
   schedule:
     - cron: '0 5 * * *'  # Runs at 6 AM (CET) Sweden's Timezone
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   run_python_script:
