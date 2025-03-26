@@ -33,7 +33,7 @@ jobs:
 
     - name: Commit CSV file to repository
       env:
-        GH_TOKEN: ${{ secrets.GH_PAT_GUILDEVENTS }}
+        GH_PAT_GUILDEVENTS: ${{ secrets.GH_PAT_GUILDEVENTS }}
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
