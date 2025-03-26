@@ -19,7 +19,7 @@ API_KEY = os.getenv("HYPIXEL_API_KEY")
 # uuid used to fetch the guild (hardcoded)
 uuid_knattekalle = "29135e50c229404ba0b2a147abc374fc"
 
-SLEEP_DELAY = 10
+SLEEP_DELAY = 1
 
 #
 def getInfo(call):
