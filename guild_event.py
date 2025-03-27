@@ -19,7 +19,8 @@ API_KEY = os.getenv("HYPIXEL_API_KEY")
 # uuid used to fetch the guild (hardcoded)
 uuid_knattekalle = "29135e50c229404ba0b2a147abc374fc"
 
-SLEEP_DELAY = 10
+SLEEP_DELAY_SHORT = 3
+SLEEP_DELAY_LONG = 8
 
 #
 def getInfo(call):
@@ -90,6 +91,7 @@ def fetch_skyblock_data(uuid_list):
                     "Zombie Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("xp", 0),  # Default to 0 if not available
                     "Catacombs XP": profile_members[uuid].get("dungeons", {}).get("dungeon_types", {}).get("catacombs", {}).get("experience", 0)  # Default to 0 if not available
                 }
+        time.sleep(SLEEP_DELAY_SHORT) # 3s sleep, Prevent Hypixel API spam as this is fetching all 125 guild members at once, max is 120/5min
 
     return guild_data
 
@@ -155,7 +157,7 @@ def main():
         username = fetch_username(uuid)
         username_list.append(username)
         print(a, "Added: ", username, " to the CSV file.")
-        time.sleep(SLEEP_DELAY)  # Prevent API spam
+        time.sleep(SLEEP_DELAY_LONG)  # 8s sleep, Prevent API spam
     
     print("Converted uuids to usernames")
     
