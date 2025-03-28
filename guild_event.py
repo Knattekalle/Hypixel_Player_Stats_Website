@@ -84,7 +84,7 @@ def fetch_skyblock_data(uuid_list):
             if profile.get("selected", False):  # Check if this is the active profile
                 # Stores all profile members uuid from the selected profile. We will assume you are on the correct profile when running this script
                 profile_members = profile["members"]
-                
+                print(f"Getting skyblock information for uuid: {uuid}")
                 # Store data in dictionary, using .get() to avoid KeyError when data is missing (like for our Bridge bot)
                 guild_data[uuid] = {
                     "Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
