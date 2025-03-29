@@ -80,6 +80,11 @@ def fetch_skyblock_data(uuid_list):
         SKYBLOCK_PROFILE_API = f"https://api.hypixel.net/v2/skyblock/profiles?uuid={uuid}&key={API_KEY}"
         data = getInfo(SKYBLOCK_PROFILE_API)
 
+        # Debugging: Check if the API returned valid data
+        if data is None or "profiles" not in data:
+            print(f"Error: No Skyblock data found for UUID {uuid}. Full API response: {data}")
+            continue  # Skip this UUID and move to the next one
+
         for profile in data["profiles"]:
             if profile.get("selected", False):  # Check if this is the active profile
                 # Stores all profile members uuid from the selected profile. We will assume you are on the correct profile when running this script
