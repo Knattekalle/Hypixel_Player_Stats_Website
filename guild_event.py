@@ -80,11 +80,17 @@ def fetch_skyblock_data(uuid_list):
         SKYBLOCK_PROFILE_API = f"https://api.hypixel.net/v2/skyblock/profiles?uuid={uuid}&key={API_KEY}"
         data = getInfo(SKYBLOCK_PROFILE_API)
 
-        # Ensure data is valid and contains profiles
+         # Check if the API returned valid data
         profiles = data.get("profiles", None)
         if not profiles:
             print(f"Error: No Skyblock data found for UUID {uuid}. Full API response: {data}")
-            continue  # Skip this UUID and move to the next one
+            # Add them with default values to avoid issues later
+            guild_data[uuid] = {
+                "Skyblock XP": 0,
+                "Zombie Slayer XP": 0,
+                "Catacombs XP": 0
+            }
+            continue  # Move to the next UUID
 
         for profile in data["profiles"]:
             if profile.get("selected", False):  # Check if this is the active profile
