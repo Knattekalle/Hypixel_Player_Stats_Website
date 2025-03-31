@@ -102,7 +102,7 @@ def fetch_skyblock_data(uuid_list):
                     #"Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
                     "Zombie Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("xp", 0),  # Default to 0 if not available
                     "Spider Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("spider", {}).get("xp", 0),  # Default to 0 if not available
-                    "Sven Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("wolf", {}).get("xp", 0),  # Default to 0 if not available
+                    "Wolf Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("wolf", {}).get("xp", 0),  # Default to 0 if not available
                     "Enderman Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("enderman", {}).get("xp", 0),  # Default to 0 if not available
                     "Blaze Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("blaze", {}).get("xp", 0),  # Default to 0 if not available
                     #"Catacombs XP": profile_members[uuid].get("dungeons", {}).get("dungeon_types", {}).get("catacombs", {}).get("experience", 0)  # Default to 0 if not available
