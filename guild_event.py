@@ -20,7 +20,7 @@ API_KEY = os.getenv("HYPIXEL_API_KEY")
 uuid_knattekalle = "29135e50c229404ba0b2a147abc374fc"
 
 SLEEP_DELAY_SHORT = 3
-SLEEP_DELAY_LONG = 8
+SLEEP_DELAY_LONG = 1
 
 #
 def getInfo(call):
@@ -99,9 +99,13 @@ def fetch_skyblock_data(uuid_list):
                 print(f"Getting skyblock information for uuid: {uuid}")
                 # Store data in dictionary, using .get() to avoid KeyError when data is missing (like for our Bridge bot)
                 guild_data[uuid] = {
-                    "Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
+                    #"Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
                     "Zombie Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("xp", 0),  # Default to 0 if not available
-                    "Catacombs XP": profile_members[uuid].get("dungeons", {}).get("dungeon_types", {}).get("catacombs", {}).get("experience", 0)  # Default to 0 if not available
+                    "Spider Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("spider", {}).get("xp", 0),  # Default to 0 if not available
+                    "Sven Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("sven", {}).get("xp", 0),  # Default to 0 if not available
+                    "Enderman Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("enderman", {}).get("xp", 0),  # Default to 0 if not available
+                    "Blaze Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("blaze", {}).get("xp", 0),  # Default to 0 if not available
+                    #"Catacombs XP": profile_members[uuid].get("dungeons", {}).get("dungeon_types", {}).get("catacombs", {}).get("experience", 0)  # Default to 0 if not available
                 }
         time.sleep(SLEEP_DELAY_SHORT) # 3s sleep, Prevent Hypixel API spam as this is fetching all 125 guild members at once, max is 120/5min
 
@@ -109,7 +113,7 @@ def fetch_skyblock_data(uuid_list):
 
 
 #
-def write_skyblock_data_to_csv(date_list, username_list, guild_data, filename="Guild_Event"): 
+def write_skyblock_data_to_csv(date_list, username_list, guild_data, filename="Guild_Event_Started"): 
     """Write Skyblock stats data to a new CSV file"""
 
     current_date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
@@ -131,7 +135,7 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_data, filename="G
     df['Username'] = username_list
     
     # Specify the column order manually
-    column_order = ['Joined Guild', 'UUID', 'Username','Skyblock XP', 'Zombie Slayer XP', 'Catacombs XP']
+    column_order = ['Joined Guild', 'UUID', 'Username', 'Zombie Slayer XP', 'Spider Slayer XP', 'Sven Slayer XP', 'Enderman Slayer XP', 'Blaze Slayer XP']
     
     # Reorder the DataFrame based on the specified column order
     df = df[column_order]
