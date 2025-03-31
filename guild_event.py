@@ -20,7 +20,7 @@ API_KEY = os.getenv("HYPIXEL_API_KEY")
 uuid_knattekalle = "29135e50c229404ba0b2a147abc374fc"
 
 SLEEP_DELAY_SHORT = 3
-SLEEP_DELAY_LONG = 1
+SLEEP_DELAY_LONG = 10
 
 #
 def getInfo(call):
@@ -99,7 +99,7 @@ def fetch_skyblock_data(uuid_list):
                 print(f"Getting skyblock information for uuid: {uuid}")
                 # Store data in dictionary, using .get() to avoid KeyError when data is missing (like for our Bridge bot)
                 guild_data[uuid] = {
-                    #"Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
+                    "Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),  # Default to 0 if not available
                     "Zombie Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("xp", 0),  # Default to 0 if not available
                     "Spider Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("spider", {}).get("xp", 0),  # Default to 0 if not available
                     "Wolf Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("wolf", {}).get("xp", 0),  # Default to 0 if not available
@@ -135,7 +135,7 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_data, filename="G
     df['Username'] = username_list
     
     # Specify the column order manually
-    column_order = ['Joined Guild', 'UUID', 'Username', 'Zombie Slayer XP', 'Spider Slayer XP', 'Wolf Slayer XP', 'Enderman Slayer XP', 'Blaze Slayer XP']
+    column_order = ['Joined Guild', 'UUID', 'Username', 'Skyblock XP', 'Zombie Slayer XP', 'Spider Slayer XP', 'Wolf Slayer XP', 'Enderman Slayer XP', 'Blaze Slayer XP']
     
     # Reorder the DataFrame based on the specified column order
     df = df[column_order]
