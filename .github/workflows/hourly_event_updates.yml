@@ -35,8 +35,8 @@ jobs:
         GH_PAT_GUILDEVENTS: ${{ secrets.GH_PAT_GUILDEVENTS }}
       - name: Commit and push updated CSVs
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/Guild_FC_and_FTC.csv
           git commit -m "Add generated CSV files"
           git push https://x-access-token:${{ secrets.GH_PAT_GUILDEVENTS }}@github.com/Knattekalle/Skyblock_Guild_Events.git main
