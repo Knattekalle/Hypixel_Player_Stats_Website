@@ -74,7 +74,7 @@ def convert_unix_timestamp(timestamp):
     
     return formatted_time
 
-
+# Not used for github-workflows, using def load_usernames_from_cache(uuid_list) instead
 def fetch_username(uuid):
     """Fetch the username from Mojang API using the player's UUID"""
     
@@ -83,7 +83,7 @@ def fetch_username(uuid):
     
     data = getInfo(MOJANG_API)                             
     return data.get("name") if data else None  # Return the username if available
-
+# Not used for github-workflows, using def load_usernames_from_cache(uuid_list) instead
 def load_or_fetch_usernames(uuid_list):
     """Load usernames from today's cache or fetch from API and cache them."""
     
@@ -113,7 +113,31 @@ def load_or_fetch_usernames(uuid_list):
         df.to_csv(filename, index=False)
         print(f"Saved username cache to: {filename}")
 
-    return [username_dict[uuid] for uuid in uuid_list]  # Ordered username list
+    return [username_dict[uuid] for uuid in uuid_list]  # Ordered username list  
+
+
+def load_usernames_from_cache(uuid_list):
+    """
+    Load usernames from a pre-uploaded CSV file containing UUID-to-Username mapping.
+    No API calls — assumes file is present in repo.
+    """
+
+    # Update this if you change the filename
+    today = "2025_04_30"
+    filename = f"FC_and_FTC_usernames_{today}.csv"
+    username_dict = {}
+
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Username cache file '{filename}' not found in repository. Please upload it before running.")
+
+    print(f"Loading usernames from cache: {filename}")
+    df = pd.read_csv(filename)
+
+    for _, row in df.iterrows():
+        username_dict[row['UUID']] = row['Username']
+
+    # Return the usernames in the same order as the input UUIDs
+    return [username_dict.get(uuid, "Unknown") for uuid in uuid_list]
 
 
 
@@ -322,7 +346,8 @@ def main():
     
     
     # Convert UUID to Username
-    username_list = load_or_fetch_usernames(uuid_list)
+    # username_list = load_or_fetch_usernames(uuid_list)
+    username_list = load_usernames_from_cache(uuid_list)
     
     print("Converted uuids to usernames")
     
