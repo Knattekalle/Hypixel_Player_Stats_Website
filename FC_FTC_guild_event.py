@@ -270,7 +270,7 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data)
     
     # Basic static columns
     base_columns = [
-        'Snapshot Time', 'Joined Guild', 'UUID', 'Username',
+        'Snapshot Time', 'Guild', 'Joined Guild', 'UUID', 'Username',
         'Skyblock XP', 'Zombie Slayer XP', 'Spider Slayer XP',
         'Wolf Slayer XP', 'Enderman Slayer XP', 'Blaze Slayer XP', 'Vampire Slayer XP',
         'Catacombs XP', 'Amount of Secrets', 'Mythological Kills', 'Burrows Chains Complete', 'Burrows Dug',
