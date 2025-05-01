@@ -1,0 +1,42 @@
+name: Hourly Event Updates
+
+on:
+  push:
+    branches:
+      - main 
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  hourly-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+  
+    - name: Run Python script
+      env:
+          HYPIXEL_API_KEY: ${{ secrets.HYPIXEL_API_KEY }}
+      run: |
+        python FC_FTC_guild_event.py  # Run your Python script
+
+    - name: Commit CSV file to repository
+      env:
+        GH_PAT_GUILDEVENTS: ${{ secrets.GH_PAT_GUILDEVENTS }}
+      - name: Commit and push updated CSVs
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/hourly/*.csv
+          git commit -m "Hourly update from GitHub Actions"
+          git push
