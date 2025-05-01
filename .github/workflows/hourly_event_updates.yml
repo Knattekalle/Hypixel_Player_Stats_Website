@@ -38,5 +38,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add data/Guild_FC_and_FTC.csv
-          git commit -m "Hourly update from GitHub Actions"
-          git push
+          git commit -m "Add generated CSV files"
+          git push https://x-access-token:${{ secrets.GH_PAT_GUILDEVENTS }}@github.com/Knattekalle/Skyblock_Guild_Events.git main
