@@ -318,7 +318,7 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data)
     
     # Save DataFrame to CSV 
     full_filename = f"data/{filename}.csv"
-    df.to_csv(full_filename, mode='a', header=True os.path.exists(full_filename), index=False)
+    df.to_csv(full_filename, mode='a', header=True, index=False)
     print(f"Data successfully written to {full_filename }")
 
 
