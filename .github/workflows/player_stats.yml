@@ -1,11 +1,11 @@
-name: Hourly Event Updates
+name: Player - Guild - API Updates
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '15 */4 * * *'  # Every 2 hours, on the hour
+    - cron: '15 */6 * * *'  # Every 2 hours, on the hour
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
