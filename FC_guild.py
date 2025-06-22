@@ -17,7 +17,7 @@ import pandas as pd
 API_KEY = os.getenv("HYPIXEL_API_KEY")
 
 SLEEP_DELAY = 10
-SLEEP_DELAY_SHORT = 1
+SLEEP_DELAY_SHORT = 2
 
 # Global list of skill keys used in multiple places
 COLLECTION_KEYS = [
@@ -88,8 +88,8 @@ def load_or_fetch_usernames(uuid_list):
     """Load usernames from today's cache or fetch from API and cache them."""
     
     #today = datetime.datetime.now().strftime("%Y_%m_%d")
-    today = "2025_04_30"
-    filename = f"FC_and_FTC_usernames_{today}.csv"
+    today = "2025_06_22"
+    filename = f"FC_usernames_{today}.csv"
 
     username_dict = {}
 
@@ -123,8 +123,8 @@ def load_usernames_from_cache(uuid_list):
     """
 
     # Update this if you change the filename
-    today = "2025_04_30"
-    filename = f"FC_and_FTC_usernames_{today}.csv"
+    today = "2025_06_22"
+    filename = f"FC_usernames_{today}.csv"
     username_dict = {}
 
     if not os.path.exists(filename):
@@ -330,16 +330,16 @@ def main():
     
     # My uuid and API Key
     fc_guild_id = "29135e50c229404ba0b2a147abc374fc" # My (Knattekalle's) uuid 
-    ftc_guild_id = "88ef0bfe7d66478d8f94bf7334d35066" # SpeedBoostDog's uuid
+    #ftc_guild_id = "88ef0bfe7d66478d8f94bf7334d35066" # SpeedBoostDog's uuid
     
     # Gather guild information
     fc_members = fetch_guild_info(fc_guild_id)
-    ftc_members = fetch_guild_info(ftc_guild_id)
-    combined_members = fc_members + ftc_members
+    #ftc_members = fetch_guild_info(ftc_guild_id)
+    #combined_members = fc_members + ftc_members
     
-    uuid_list = [x[0] for x in combined_members]
-    date_list = [convert_unix_timestamp(x[1]) for x in combined_members]
-    guild_list = [x[2] for x in combined_members]    
+    uuid_list = [x[0] for x in fc_guild_id]
+    date_list = [convert_unix_timestamp(x[1]) for x in fc_guild_id]
+    guild_list = [x[2] for x in fc_guild_id]    
    
     print("Successfully gathered Guild Data")
     print("Converted Unix time to readable time")
