@@ -337,9 +337,9 @@ def main():
     #ftc_members = fetch_guild_info(ftc_guild_id)
     #combined_members = fc_members + ftc_members
     
-    uuid_list = [x[0] for x in fc_guild_id]
-    date_list = [convert_unix_timestamp(x[1]) for x in fc_guild_id]
-    guild_list = [x[2] for x in fc_guild_id]    
+    uuid_list = [x[0] for x in fc_members]
+    date_list = [convert_unix_timestamp(x[1]) for x in fc_members]
+    guild_list = [x[2] for x in fc_members]    
    
     print("Successfully gathered Guild Data")
     print("Converted Unix time to readable time")
