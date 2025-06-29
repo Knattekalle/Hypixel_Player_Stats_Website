@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-      - cron: '15 4,10,16,22 * * *'  # Every 6 hours, 15 minutes past the hour
+      - cron: '15 1 * * *'  # Every 24h , 15 minutes past the hour
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
