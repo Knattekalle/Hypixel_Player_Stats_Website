@@ -17,7 +17,7 @@ import pandas as pd
 API_KEY = os.getenv("HYPIXEL_API_KEY")
 
 SLEEP_DELAY = 10
-SLEEP_DELAY_SHORT = 2
+SLEEP_DELAY_SHORT = 3
 
 # Global list of skill keys used in multiple places
 COLLECTION_KEYS = [
