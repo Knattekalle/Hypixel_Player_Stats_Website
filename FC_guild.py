@@ -90,8 +90,8 @@ def load_or_fetch_usernames(uuid_list):
     """Load usernames from today's cache or fetch from API and cache them."""
     
     #today = datetime.datetime.now().strftime("%Y_%m_%d")
-    today = "2025_07_25"
-    filename = f"FTC_usernames_{today}.csv"
+    today = "2025_09_02"
+    filename = f"FC_usernames_{today}.csv"
 
     username_dict = {}
 
@@ -125,8 +125,8 @@ def load_usernames_from_cache(uuid_list):
     """
 
     # Update this if you change the filename
-    today = "2025_07_25"
-    filename = f"FTC_usernames_{today}.csv"
+    today = "2025_09_02"
+    filename = f"FC_usernames_{today}.csv"
     username_dict = {}
 
     if not os.path.exists(filename):
@@ -279,7 +279,7 @@ def fetch_skyblock_data(uuid_list):
 #
 def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data): 
     """Write Skyblock stats data to a new CSV file"""
-    filename="Guild_FTC_Stats_July_August"
+    filename="Guild_FC_Stats_Derpy_September"
 
 
     # Convert dictionary to DataFrame    
@@ -331,17 +331,17 @@ def main():
     print("Script started...")
     
     # My uuid and API Key
-    #fc_guild_id = "29135e50c229404ba0b2a147abc374fc" # My (Knattekalle's) uuid 
-    ftc_guild_id = "550b24bcaa4b42c992cb5008c6101a1b" # Polabur's uuid
+    fc_guild_id = "29135e50c229404ba0b2a147abc374fc" # My (Knattekalle's) uuid 
+    #ftc_guild_id = "550b24bcaa4b42c992cb5008c6101a1b" # Polabur's uuid
     
     # Gather guild information
-    #fc_members = fetch_guild_info(ftc_guild_id)
-    ftc_members = fetch_guild_info(ftc_guild_id)
+    fc_members = fetch_guild_info(fc_guild_id)
+    #ftc_members = fetch_guild_info(ftc_guild_id)
     #combined_members = fc_members + ftc_members
     
-    uuid_list = [x[0] for x in ftc_members]
-    date_list = [convert_unix_timestamp(x[1]) for x in ftc_members]
-    guild_list = [x[2] for x in ftc_members]    
+    uuid_list = [x[0] for x in fc_members]
+    date_list = [convert_unix_timestamp(x[1]) for x in fc_members]
+    guild_list = [x[2] for x in fc_members]    
    
     print("Successfully gathered Guild Data")
     print("Converted Unix time to readable time")
