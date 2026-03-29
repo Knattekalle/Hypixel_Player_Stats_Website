@@ -279,7 +279,7 @@ def fetch_skyblock_data(uuid_list):
 #
 def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data): 
     """Write Skyblock stats data to a new CSV file"""
-    filename="Guild_FC_FTC_Event_Kuudra_November_2026_30th"
+    filename="Guild_FC_FTC_Event_Kuudra_March_2026_30th"
 
 
     # Convert dictionary to DataFrame    
