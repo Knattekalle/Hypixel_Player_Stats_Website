@@ -196,11 +196,18 @@ def fetch_skyblock_data(uuid_list):
             guild_data[uuid] = {
                 "Skyblock XP": profile_members[uuid].get("leveling", {}).get("experience", 0),
                 "Zombie Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("xp", 0),
+                "T5 Zombie Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("zombie", {}).get("boss_kills_tier_4", 0),
                 "Spider Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("spider", {}).get("xp", 0),
+                "T5 Spider Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("spider", {}).get("boss_kills_tier_4", 0),
                 "Wolf Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("wolf", {}).get("xp", 0),
+                "T4 Wolf Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("wolf", {}).get("boss_kills_tier_3", 0),
                 "Enderman Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("enderman", {}).get("xp", 0),
+                "T4 Enderman Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("enderman", {}).get("boss_kills_tier_3", 0),
                 "Blaze Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("blaze", {}).get("xp", 0),
+                "T4 Blaze Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("blaze", {}).get("boss_kills_tier_3", 0),
                 "Vampire Slayer XP": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("vampire", {}).get("xp", 0),
+                "T4 Vampire Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("vampire", {}).get("boss_kills_tier_3", 0),
+                "T5 Vampire Slayer Bosses Killed": profile_members[uuid].get("slayer", {}).get("slayer_bosses", {}).get("vampire", {}).get("boss_kills_tier_4", 0),
                 "Catacombs XP": profile_members[uuid].get("dungeons", {}).get("dungeon_types", {}).get("catacombs", {}).get("experience", 0),
                 "Amount of Secrets": profile_members[uuid].get("dungeons", {}).get("secrets", 0),
                 "Mythological Kills": profile_members[uuid].get("player_stats", {}).get("mythos", {}).get("kills", 0),
@@ -297,8 +304,9 @@ def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data)
     # Basic static columns
     base_columns = [
         'Snapshot Time', 'Guild', 'Joined Guild', 'UUID', 'Username',
-        'Skyblock XP', 'Zombie Slayer XP', 'Spider Slayer XP',
-        'Wolf Slayer XP', 'Enderman Slayer XP', 'Blaze Slayer XP', 'Vampire Slayer XP',
+        'Skyblock XP', 'Zombie Slayer XP', "T5 Zombie Slayer Bosses Killed", 'Spider Slayer XP', "T5 Spider Slayer Bosses Killed",
+        'Wolf Slayer XP', "T4 Wolf Slayer Bosses Killed", 'Enderman Slayer XP', "T4 Enderman Slayer Bosses Killed", 'Blaze Slayer XP', "T4 Blaze Slayer Bosses Killed", 
+        'Vampire Slayer XP', "T4 Vampire Slayer Bosses Killed", "T5 Vampire Slayer Bosses Killed",
         'Catacombs XP', 'Amount of Secrets', 'Mythological Kills', 'Burrows Chains Complete', 'Burrows Dug',
         'Sea Creatures Caught', 'Trophy Fish Caught'
     ]
