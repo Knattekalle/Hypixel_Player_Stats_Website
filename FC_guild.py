@@ -90,7 +90,7 @@ def load_or_fetch_usernames(uuid_list):
     """Load usernames from today's cache or fetch from API and cache them."""
     
     #today = datetime.datetime.now().strftime("%Y_%m_%d")
-    today = "20250329"
+    today = "20260412"
     filename = f"FC_FTC_usernames_{today}.csv"
 
     username_dict = {}
@@ -125,8 +125,8 @@ def load_usernames_from_cache(uuid_list):
     """
 
     # Update this if you change the filename
-    today = "2025_09_02"
-    filename = f"FC_usernames_{today}.csv"
+    today = "20260412"
+    filename = f"FC_FTC_usernames_{today}.csv"
     username_dict = {}
 
     if not os.path.exists(filename):
@@ -279,7 +279,7 @@ def fetch_skyblock_data(uuid_list):
 #
 def write_skyblock_data_to_csv(date_list, username_list, guild_list, guild_data): 
     """Write Skyblock stats data to a new CSV file"""
-    filename="Guild_FC_FTC_Event_Kuudra_March_2026_30th"
+    filename="Guild_FC_FTC_Event_Aatrox_April_2026_12th"
 
 
     # Convert dictionary to DataFrame    
